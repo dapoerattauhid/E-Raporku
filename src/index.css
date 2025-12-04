@@ -1,0 +1,518 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 210 20% 98%;
+    --foreground: 222 47% 11%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+
+    --primary: 217 91% 35%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 174 62% 40%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 210 20% 94%;
+    --muted-foreground: 215 16% 47%;
+
+    --accent: 174 62% 95%;
+    --accent-foreground: 174 62% 25%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 217 91% 35%;
+
+    --radius: 0.75rem;
+
+    --sidebar-background: 217 91% 15%;
+    --sidebar-foreground: 210 40% 96%;
+    --sidebar-primary: 174 62% 50%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 217 91% 22%;
+    --sidebar-accent-foreground: 210 40% 96%;
+    --sidebar-border: 217 91% 25%;
+    --sidebar-ring: 174 62% 50%;
+
+    /* Custom tokens */
+    --success: 142 76% 36%;
+    --success-foreground: 0 0% 100%;
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 0%;
+    --info: 199 89% 48%;
+    --info-foreground: 0 0% 100%;
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(217 91% 35%) 0%, hsl(217 91% 45%) 100%);
+    --gradient-secondary: linear-gradient(135deg, hsl(174 62% 40%) 0%, hsl(174 62% 50%) 100%);
+    --gradient-sidebar: linear-gradient(180deg, hsl(217 91% 15%) 0%, hsl(217 91% 12%) 100%);
+
+    /* Shadows */
+    --shadow-sm: 0 1px 2px 0 hsl(217 91% 35% / 0.05);
+    --shadow-md: 0 4px 6px -1px hsl(217 91% 35% / 0.1), 0 2px 4px -2px hsl(217 91% 35% / 0.1);
+    --shadow-lg: 0 10px 15px -3px hsl(217 91% 35% / 0.1), 0 4px 6px -4px hsl(217 91% 35% / 0.1);
+    --shadow-xl: 0 20px 25px -5px hsl(217 91% 35% / 0.1), 0 8px 10px -6px hsl(217 91% 35% / 0.1);
+  }
+
+  .dark {
+    --background: 222 47% 6%;
+    --foreground: 210 40% 98%;
+
+    --card: 222 47% 8%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222 47% 8%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 217 91% 55%;
+    --primary-foreground: 222 47% 11%;
+
+    --secondary: 174 62% 45%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 217 32% 17%;
+    --muted-foreground: 215 20% 65%;
+
+    --accent: 217 32% 17%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62% 30%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217 32% 17%;
+    --input: 217 32% 17%;
+    --ring: 217 91% 55%;
+
+    --sidebar-background: 222 47% 6%;
+    --sidebar-foreground: 210 40% 96%;
+    --sidebar-primary: 174 62% 50%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 217 32% 15%;
+    --sidebar-accent-foreground: 210 40% 96%;
+    --sidebar-border: 217 32% 17%;
+    --sidebar-ring: 174 62% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    @apply font-semibold tracking-tight;
+  }
+}
+
+@layer components {
+  .page-container {
+    @apply min-h-screen bg-background;
+  }
+
+  .content-wrapper {
+    @apply p-6 lg:p-8;
+  }
+
+  .page-header {
+    @apply mb-8;
+  }
+
+  .page-title {
+    @apply text-2xl lg:text-3xl font-bold text-foreground;
+  }
+
+  .page-subtitle {
+    @apply text-muted-foreground mt-1;
+  }
+
+  .stat-card {
+    @apply bg-card rounded-xl p-6 border border-border shadow-sm hover:shadow-md transition-shadow duration-200;
+  }
+
+  .data-table-wrapper {
+    @apply bg-card rounded-xl border border-border overflow-hidden;
+  }
+}
+
+@layer utilities {
+  .gradient-primary {
+    background: var(--gradient-primary);
+  }
+
+  .gradient-secondary {
+    background: var(--gradient-secondary);
+  }
+
+  .gradient-sidebar {
+    background: var(--gradient-sidebar);
+  }
+
+  .shadow-card {
+    box-shadow: var(--shadow-md);
+  }
+
+  .shadow-card-hover {
+    box-shadow: var(--shadow-lg);
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.3s ease-out;
+  }
+
+  .animate-slide-in {
+    animation: slideIn 0.3s ease-out;
+  }
+
+  .animate-scale-in {
+    animation: scaleIn 0.2s ease-out;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes slideIn {
+    from { 
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to { 
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes scaleIn {
+    from { 
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    to { 
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+}
+
+/* Print styles for report */
+@media print {
+  body {
+    background: white !important;
+    color: black !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* Hide everything except report */
+  .no-print,
+  nav,
+  aside,
+  header,
+  button,
+  [data-sidebar],
+  .sidebar {
+    display: none !important;
+  }
+
+  /* Report container styles */
+  .print-report {
+    display: block !important;
+    position: static !important;
+    left: auto !important;
+    top: auto !important;
+    width: 100% !important;
+    max-width: none !important;
+    background: white !important;
+    color: black !important;
+    padding: 20mm 15mm !important;
+    margin: 0 !important;
+    box-shadow: none !important;
+    border: none !important;
+    transform: none !important;
+    animation: none !important;
+    opacity: 1 !important;
+    overflow: visible !important;
+    visibility: visible !important;
+    z-index: 9999 !important;
+    font-size: 12pt !important;
+    line-height: 1.4 !important;
+  }
+
+  .print-report * {
+    color: black !important;
+    background: transparent !important;
+    visibility: visible !important;
+    /* Do not force display:block for all elements; it breaks table layout */
+  }
+
+  .print-report h1,
+  .print-report h2,
+  .print-report h3,
+  .print-report h4 {
+    margin: 8px 0 !important;
+    color: black !important;
+    page-break-after: avoid !important;
+    page-break-inside: avoid !important;
+  }
+
+  .print-report h1 {
+    font-size: 16pt !important;
+    margin-bottom: 16px !important;
+  }
+
+  .print-report h2 {
+    font-size: 14pt !important;
+    margin-bottom: 12px !important;
+  }
+
+  .print-report h3 {
+    font-size: 13pt !important;
+  }
+
+  .print-report p {
+    margin: 5px 0 !important;
+    color: black !important;
+  }
+
+  /* Kop Rapor styling */
+  .print-report .kop-rapor {
+    border-bottom: 3px double black !important;
+    padding-bottom: 8px !important;
+    margin-bottom: 16px !important;
+  }
+
+  .print-report .kop-rapor h2 {
+    font-size: 14pt !important;
+    margin-bottom: 4px !important;
+  }
+
+  .print-report .kop-rapor p {
+    font-size: 10pt !important;
+  }
+
+  /* Student info styling */
+  .print-report .student-info div {
+    margin: 3px 0 !important;
+    font-size: 11pt !important;
+  }
+
+  /* Table styling */
+  .print-report table {
+    border-collapse: collapse !important;
+    width: 100% !important;
+    margin: 10px 0 !important;
+    font-size: 10pt !important;
+    page-break-inside: auto !important;
+  }
+
+  /* Borderless table helper (for student info and signatures) */
+  .print-report .borderless-table,
+  .borderless-table {
+    border: none !important;
+    border-collapse: collapse !important;
+    width: 100% !important;
+    margin: 0 0 8px 0 !important;
+  }
+
+  .print-report .borderless-table td,
+  .borderless-table td {
+    border: none !important;
+    padding: 0 !important;
+    vertical-align: top !important;
+  }
+
+  .print-report thead {
+    display: table-header-group !important;
+  }
+
+  .print-report tfoot {
+    display: table-row-group !important;
+  }
+
+  .print-report tr {
+    page-break-inside: avoid !important;
+    page-break-after: auto !important;
+  }
+
+  .print-report th,
+  .print-report td {
+    border: 1px solid black !important;
+    padding: 6px 4px !important;
+    background: white !important;
+    color: black !important;
+    visibility: visible !important;
+    text-align: left !important;
+  }
+
+  .print-report th {
+    background: #f0f0f0 !important;
+    font-weight: bold !important;
+    text-align: center !important;
+  }
+
+  .print-report th.text-center {
+    text-align: center !important;
+  }
+
+  /* Specific column width for grades table */
+  .print-report .grades_tbl {
+    table-layout: fixed !important;
+    width: 100% !important;
+    border-collapse: collapse !important;
+  }
+
+  .print-report .grades_tbl .no-col {
+    width: 5% !important;
+    text-align: center !important;
+    max-width: 5% !important;
+  }
+
+  .print-report .grades_tbl .subject-col {
+    width: 45% !important;
+    text-align: left !important;
+    max-width: 45% !important;
+  }
+
+  .print-report .grades_tbl .grade-col {
+    width: 15% !important;
+    text-align: center !important;
+    max-width: 15% !important;
+  }
+
+  .print-report .grades_tbl .competency-col {
+    width: 35% !important;
+    text-align: left !important;
+    max-width: 35% !important;
+  }
+
+  .print-report .grades_tbl th,
+  .print-report .grades_tbl td {
+    padding: 8px 4px !important;
+    border: 1px solid black !important;
+  }
+
+  .print-report .grades_tbl th.no-col,
+  .print-report .grades_tbl td.no-col {
+    text-align: center !important;
+  }
+
+  .print-report .grades_tbl th.grade-col,
+  .print-report .grades_tbl td.grade-col {
+    text-align: center !important;
+  }
+
+  /* Specific overrides for print mode to ensure table structure */
+  .print-report .grades_tbl {
+    table-layout: fixed !important;
+    width: 100% !important;
+  }
+
+  .print-report .grades_tbl th,
+  .print-report .grades_tbl td {
+    display: table-cell !important;
+    vertical-align: top !important;
+    border: 1px solid black !important;
+    padding: 8px 6px !important;
+    word-break: break-word !important;
+    white-space: normal !important;
+  }
+
+  /* Attendance table - vertical layout */
+  .print-report .attendance_tbl {
+    table-layout: fixed !important;
+    width: 100% !important;
+    border-collapse: collapse !important;
+  }
+
+  .print-report .attendance_tbl td {
+    padding: 8px 6px !important;
+    border: 1px solid black !important;
+    vertical-align: top !important;
+    word-break: break-word !important;
+  }
+
+  /* Ensure table cells render correctly (override aggressive selectors) */
+  .print-report table th,
+  .print-report table td {
+    display: table-cell !important;
+    vertical-align: top !important;
+  }
+
+  /* Attendance styling */
+  .print-report .attendance-grid {
+    display: table !important;
+    width: 100% !important;
+    margin: 10px 0 !important;
+  }
+
+  .print-report .attendance-item {
+    display: table-cell !important;
+    padding: 8px !important;
+    border: 1px solid black !important;
+    vertical-align: top !important;
+  }
+
+  /* Signatures styling */
+  .print-report .signatures {
+    margin-top: 40px !important;
+    page-break-before: avoid !important;
+  }
+
+  .print-report .signature-box {
+    text-align: center !important;
+    margin-top: 20px !important;
+  }
+
+  .print-report .signature-line {
+    width: 70% !important;
+    margin: 40px auto 0 !important;
+    border-top: 1px solid black !important;
+  }
+
+  /* Remove animations and transitions for print */
+  .print-report .animate-fade-in,
+  .print-report .animate-slide-in,
+  .print-report .animate-scale-in {
+    animation: none !important;
+    opacity: 1 !important;
+  }
+
+  /* Specifically handle shadcn/ui table wrapper */
+  .print-report > div.relative.w-full.overflow-auto {
+    display: block !important;
+    overflow: visible !important;
+  }
+
+  .print-report [class*="table"] > *,
+  .print-report [class*="table"] * {
+    visibility: visible !important;
+    display: table-row !important;
+  }
+
+  /* Page setup */
+  @page {
+    size: A4;
+    margin-top: 40mm;    /* 4 cm */
+    margin-bottom: 30mm; /* 3 cm */
+    margin-left: 40mm;   /* 4 cm */
+    margin-right: 30mm;  /* 3 cm */
+  }
+}
