@@ -1,22 +1,2 @@
-name = "e-raporku"
-type = "javascript"
-account_id = ""
-workers_dev = true
-route = ""
-zone_id = ""
-main = "src/index.ts"
-
-[env.production]
-name = "e-raporku-prod"
-
-[build]
-command = "npm run build"
-cwd = "./"
-watch_paths = ["src/**/*.tsx", "src/**/*.ts"]
-
-[[routes]]
-pattern = "example.com/*"
-zone_name = "example.com"
-
-[triggers]
-crons = []
+# This file is intentionally minimal for Cloudflare Pages
+# Most configuration is done through the Cloudflare Pages dashboard
