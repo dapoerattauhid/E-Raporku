@@ -12,11 +12,14 @@ import {
   Shield,
   User,
   Award,
+  Moon,
+  Sun,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useAuth } from "@/hooks/useAuth";
 import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
+import { useState, useEffect } from "react";
 
 const menuItems = [
   { icon: LayoutDashboard, label: "Dashboard", path: "/" },
@@ -34,6 +37,26 @@ const menuItems = [
 export function Sidebar() {
   const location = useLocation();
   const { user } = useAuth();
+  const [darkMode, setDarkMode] = useState(false);
+
+  useEffect(() => {
+    const isDark = localStorage.getItem("darkMode") === "true";
+    setDarkMode(isDark);
+    if (isDark) {
+      document.documentElement.classList.add("dark");
+    }
+  }, []);
+
+  const toggleDarkMode = () => {
+    const newMode = !darkMode;
+    setDarkMode(newMode);
+    localStorage.setItem("darkMode", String(newMode));
+    if (newMode) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  };
 
   const { data: profile } = useQuery({
     queryKey: ["user-profile", user?.id],
@@ -117,6 +140,29 @@ export function Sidebar() {
             );
           })}
         </nav>
+
+        {/* Dark Mode Toggle */}
+        <div className="border-t border-sidebar-border px-3 py-2">
+          <button
+            onClick={toggleDarkMode}
+            className={cn(
+              "flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-all duration-200",
+              "text-sidebar-foreground/70 hover:bg-sidebar-accent hover:text-sidebar-foreground"
+            )}
+          >
+            {darkMode ? (
+              <>
+                <Sun className="h-5 w-5" />
+                <span>Mode Terang</span>
+              </>
+            ) : (
+              <>
+                <Moon className="h-5 w-5" />
+                <span>Mode Gelap</span>
+              </>
+            )}
+          </button>
+        </div>
 
         {/* Footer */}
         <div className="border-t border-sidebar-border p-4">
